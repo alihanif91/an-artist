@@ -15,10 +15,11 @@
 /* ---------- page banner ---------- */
 .pban{position:relative;background:var(--navy);color:var(--cream);overflow:hidden;
   padding:calc(var(--head-h) + 3.2rem) 0 3.2rem}
-.pban img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42}
+.pban img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6}
 .pban::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(23,34,59,.86),rgba(23,34,59,.55) 55%,rgba(23,34,59,.92))}
-.pban .in{position:relative;z-index:2;max-width:44ch}
+  background:linear-gradient(100deg,rgba(23,34,59,.94) 0%,rgba(23,34,59,.82) 45%,rgba(23,34,59,.42) 100%)}
+.pban .wrap{position:relative;z-index:2}
+.pban .in{max-width:46ch}
 .pban h1{font-weight:200;font-size:clamp(2rem,4.6vw,3.4rem);margin:.7rem 0 0;line-height:1.12}
 .pban p{margin:1rem 0 0;color:#D6DAE4}
 .crumb{font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--lime)}
