@@ -449,6 +449,21 @@ footer .about{font-size:.86rem;max-width:32ch;color:#CBD2E0}
   .pthumbs{grid-template-columns:repeat(4,1fr);order:2}
 }
 
+/* ---------- drinkware ---------- */
+.dstrip{display:grid;grid-template-columns:repeat(5,1fr);gap:.7rem;margin-top:1.4rem}
+.dstrip figure{margin:0}
+.dstrip img{width:100%;aspect-ratio:4/5;object-fit:cover;background:#EFECE4}
+.dstrip figcaption{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  margin-top:.5rem;color:#7A8194;text-align:center}
+@media(max-width:700px){.dstrip{grid-template-columns:repeat(3,1fr)}}
+.swatchrow{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem}
+.swatchrow button{background:none;border:1px solid rgba(23,34,59,.25);border-radius:999px;
+  padding:.5rem 1rem;font:inherit;font-size:.78rem;cursor:pointer;transition:.2s}
+.swatchrow button[aria-pressed="true"]{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+.swatchrow button:hover{border-color:var(--navy)}
+.notice{background:#EFEADC;border-inline-start:3px solid var(--blue);padding:1rem 1.2rem;
+  font-size:.86rem;margin-top:1.4rem;max-width:62ch}
+
 /* ---------- cross links ---------- */
 .xlinks{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .xlink{position:relative;display:flex;align-items:center;justify-content:space-between;gap:1rem;
@@ -490,6 +505,7 @@ footer .about{font-size:.86rem;max-width:32ch;color:#CBD2E0}
     <nav>
       <a href="index.html"><span class="en">Home</span><span class="only-ar ar-txt">الرئيسية</span></a>
       <a href="epoxy.html"><span class="en">Epoxy pieces</span><span class="only-ar ar-txt">قطع الايبوكسي</span></a>
+      <a href="drinkware.html"><span class="en">Drinkware</span><span class="only-ar ar-txt">قوارير وأكواب</span></a>
       <a href="workshops.html"><span class="en">Workshops</span><span class="only-ar ar-txt">الورش</span></a>
       <a href="selfie-paint.html" aria-current="page"><span class="en">Selfie paint</span><span class="only-ar ar-txt">تلوين الصورة</span></a>
       <a href="index.html#kit"><span class="en">Paint at home</span><span class="only-ar ar-txt">ارسميها في البيت</span></a>
@@ -596,6 +612,7 @@ footer .about{font-size:.86rem;max-width:32ch;color:#CBD2E0}
         <h4><span class="en">Shop</span><span class="only-ar ar-txt">المتجر</span></h4>
         <ul>
           <li><a href="epoxy.html"><span class="en">Epoxy pieces</span><span class="only-ar ar-txt">قطع الايبوكسي</span></a></li>
+          <li><a href="drinkware.html"><span class="en">Drinkware</span><span class="only-ar ar-txt">قوارير وأكواب</span></a></li>
           <li><a href="workshops.html"><span class="en">Workshops</span><span class="only-ar ar-txt">الورش</span></a></li>
           <li><a href="selfie-paint.html"><span class="en">Selfie paint</span><span class="only-ar ar-txt">تلوين الصورة</span></a></li>
           <li><a href="index.html#kit"><span class="en">Paint at home</span><span class="only-ar ar-txt">ارسميها في البيت</span></a></li>
@@ -650,6 +667,8 @@ footer .about{font-size:.86rem;max-width:32ch;color:#CBD2E0}
       i.placeholder = ar ? i.dataset.arPh : i.dataset.enPh;
     });
     document.querySelectorAll('.pr, .ptable td, .wprice > .en').forEach(el => {
+      // only safe on leaf nodes — rewriting textContent would flatten any en/ar child spans
+      if (el.children.length) return;
       if (el.dataset.enTxt === undefined) el.dataset.enTxt = el.textContent;
       el.textContent = ar ? el.dataset.enTxt.replace('QAR', 'ر.ق') : el.dataset.enTxt;
     });
